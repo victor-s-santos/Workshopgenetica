@@ -15,8 +15,8 @@
  <button class='btn' id='esconde' style="height: 40px;"><b>Esconder a caixa de texto</b></button>
  <button class='btn' id='escondebtn' style="height: 40px;"><b>Esconder os botões abaixo</b></button>
  <button class='btn' id='mostrebtn' style="height: 40px;"><b>Exibir os botões abaixo</b></button>
- 
 </div>
+<div class="aqui"></div>
 <script type="text/javascript">
 	$(document).ready(function(){
 	$("#mostre").hide()
@@ -49,18 +49,17 @@
         var hexa = '0123456789abcdef';
 		$(document).ready(function renderiza(){
 			$.ajax({
-		             url : "https://workshopgenetica.herokuapp.com/api/ajax/",
+		             url : "http://127.0.0.1:8000/api/ajax/",
 		             dataType: "json",
 		             success : function (data) {
 		             	if(n == 0 || t < data.length){
 		             		for(i = t; i < data.length; i ++){
 			             		var bola = document.createElement("div");
 			             		bola.setAttribute("class", "bola");
-			             		bola.setAttribute("style", "border: 2.0px solid black;width: 35%;background-color: " + "#7FBF3F;" + ";");
-			             		bola.innerHTML = "<p><h2><b>" + data[i].texto +"</h2></b></p>"+ "<button style='height: 40px; background-color: #7FBF3F'; onclick='estourar(this.div)';><b>Remova-me</b></button>";
+			             		bola.setAttribute("style", "border: 2.0px solid black;width: 95%;background-color: " + "#7FBF3F;" + ";");
+			             		bola.innerHTML = "<p><h2><b>" + data[i].texto +"</h2></b></p>"+ "<button style='height: 40px; background-color: #7FBF3F'; onclick='estourar(this)';><b>Remova-me</b></button>";
 			             		$("body").append(bola);
 			             		bola.setAttribute("onclick", "estourar(this)");
-			             		bola.setAttribute("onMouseOver", "exibe(this)");
 			             		n = n + 1;
 			             		t = data.length;
 			             		console.log("Antes do else"+ cor)
@@ -78,10 +77,6 @@
 		});
 		function estourar(elemento){
 			document.body.removeChild(elemento);
-		}
-		function exibe(elemento){
-			elemento.transform = 'scale(1.5)';
-			console.log("passou por cima!");
 		}
     </script>
 </body>

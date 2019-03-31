@@ -130,3 +130,7 @@ textarea{
   overflow:scroll;
   height: 0px auto;
 }
+
+.aqui{
+  float: left;
+}
