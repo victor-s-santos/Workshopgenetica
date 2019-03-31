@@ -4,4 +4,4 @@ from ajax.models import Perguntas
 class PerguntasSerializer(ModelSerializer):
 	class Meta:
 		model = Perguntas
-		fields = 'texto'
+		fields = '__all__'

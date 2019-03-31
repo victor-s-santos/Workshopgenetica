@@ -49,7 +49,7 @@
         var hexa = '0123456789abcdef';
 		$(document).ready(function renderiza(){
 			$.ajax({
-		             url : "https://workshopgenetica.herokuapp.com/api/",
+		             url : "http://127.0.0.1:8000/api/ajax/",
 		             dataType: "json",
 		             success : function (data) {
 		             	if(n == 0 || t < data.length){
