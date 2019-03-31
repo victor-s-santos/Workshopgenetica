@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+	<h1><p>Lista com todos os emails que avaliaram ao menos uma palestra:</p></h1>
+	<h2><p>{{ lista_emails }}</p></h2>
+	<br>
+	<br>
+	<h1><p>O sorteado foi:</p></h1>
+	<div id='escolhido' style = "display:none">
+		<p id='escolhido2'><h2>Parabéns<br>{{ escolhido }}</br> ,você foi o ganhador do sorteio!</p>
+	</div>
+<button onclick="aparece()">Aperte-me!</button>
+<br>
+<br>
+<br>
+<p><h2>Para sortear outro nome, por favor atualize a página!</h2></p>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+<script type="text/javascript">
+var i = 0;
+function aparece() {
+	var div = document.getElementById('escolhido');
+		if(i == 0){
+			$('#escolhido').fadeIn(1200);
+			//div.style.display = "block";
+
+			i = i + 1	
+		}
+	}
+</script>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>Workshop - Genética</title>
+</head>
+<header>
+<div class="superior">
+<div class="logo">
+	<img src="{% static 'images/logo.png' %}" alt="logo"/>
+</div>
+</header>
+<body>
+</div>
+<div class="menu">
+	<div class="icone"><h2><a href="{% url 'avaliacao' %}">Avaliação<br>    </a></div>
+	<div class="icone"><h2><a href="{% url 'index' %}">Avaliação<br>evento</a></div>
+	<div class="icone"><h2><a href="{% url 'ajax_index' %}">Perguntas</a></div>
+	{% if user.is_authenticated %}
+		<div class="icone"><h2><a href="{% url 'index' %}">Sorteador<br>    </a></div>
+		<div class="icone"><h2><a href="{% url 'index' %}">Gráfico<br>    </a></div>
+		<div class="icone"><h2><a href="{% url 'index' %}">Gráfico<br>Geral</a></div>
+	{% endif %}	
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	//alert("iniciado com sucesso!")
+	$('.icone').hover(function(){
+		//alert("mouse por cima do ícone!")
+		$(this).animate({
+			"width":130,
+			"heigh":100,
+			"margin-top":-50,
+
+		}, 200);
+	}, function(){
+		$(this).animate({
+			"width":120,
+			"heigh":70,
+			"margin-top":0,
+		}, 200);
+
+	});
+});
+</script>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>

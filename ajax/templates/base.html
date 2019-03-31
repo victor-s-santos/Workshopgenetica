@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>Workshop - Genética</title>
+</head>
+<header>
+<div class="superior">
+<div class="logo">
+	<img src="{% static 'images/logo.png' %}" alt="logo"/>
+</div>
+</header>
+<body>
+</div>
+<div class="menu">
+	<div class="icone"><a href="{% url 'avaliacao' %}"><h2>Avaliação<br>    </a></div>
+	<div class="icone"><h2><a href="{% url 'avaliacao_evento' %}">Avaliação<br>evento</a></div>
+	<div class="icone"><h2><a href="{% url 'ajax_index' %}">Perguntas</a></div>
+	{% if user.is_authenticated %}
+		<div class="icone"><h2><a href="{% url 'index' %}">Sorteador<br>    </a></div>
+		<div class="icone"><h2><a href="{% url 'index' %}">Gráfico<br>    </a></div>
+		<div class="icone"><h2><a href="{% url 'index' %}">Gráfico<br>Geral</a></div>
+	{% endif %}	
+</div>
+</script>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>

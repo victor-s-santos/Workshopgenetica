@@ -1,0 +1,1 @@
+web: gunicorn unesp_apps.wsgi --log-file -

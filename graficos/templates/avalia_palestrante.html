@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<h1>Nova avaliação</h1>
+<div id="post">
+	<form method="POST" class="post-form">{% csrf_token %}
+	<p><h3>Nome Completo:{{ form.nome }}
+	<br>
+	<p><h3>Email:{{ form.email }}
+	<br>
+	<p><h3>Palestrante:{{ form.palestrante }}
+	<br>
+	<p><h3>Pontuação:{{ form.pontuacao }}
+	<br>
+	<p><h3>Sua sugestão, crítica ou observação:<br>{{ form.sugestao }}
+	<br>
+	<button type="submit" class="save btn btn-default">Enviar</button>
+	</form>
+</div>
+{% endblock %}

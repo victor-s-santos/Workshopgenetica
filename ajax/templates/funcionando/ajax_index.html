@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id='forms'>
+	<h1>Nova postagem</h1>
+	<form method="POST" class="post-form">{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit" class="btn btn-success"><b><h2>Publica</h2></b></button>
+	</form>
+</div>
+<div id='btns'>
+ <button class='btn' id='mostre'>Exibir a caixa de texto</button>
+ <button class='btn' id='esconde'>Esconder a caixa de texto.</button>
+ <button class='btn' id='escondebtn'>Esconder os botões abaixo.</button>
+ <button class='btn' id='mostrebtn'>Exibir os botões abaixo.</button>
+ 
+</div>
+<p class='p1'></p>
+<br>
+<br>
+<br>
+<br>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#mostre").hide()
+	$("#mostrebtn").hide()
+	$("#escondebtn").click(function(){
+        $(".menu").hide(1500);
+        $(this).hide()
+        $("#mostrebtn").show()
+    });
+    $("#esconde").click(function(){
+        $("#forms").hide(1500);
+        $(this).hide()
+        $("#mostre").show()
+    });
+    $("#mostre").click(function(){
+        $("#forms").show(1500);
+        $(this).hide()
+        $("#esconde").show()
+    });
+    $("#mostrebtn").click(function(){
+        $(".menu").show(1500);
+        $(this).hide()
+        $("#escondebtn").show()
+    });
+});
+		var n = 0;
+        var t = 0;
+        var i = 0;
+		$(document).ready(function renderiza(){
+			$.ajax({
+		             url : "http://127.0.0.1:8000/api",
+		             dataType: "json",
+		             success : function (data) {
+		             	if(n == 0 || t < data.length){
+		             		for(i = t; i < data.length; i ++){
+			             		var bola = document.createElement("div");
+			             		bola.setAttribute("class", "bola");
+			             		bola.innerHTML = "<p>" + data[i].texto +"</p>"+ "<button>Remova-me</button><br>";
+			             		$("body").append(bola);
+			             		bola.setAttribute("onclick", "estourar(this)");
+			             		n = n + 1;
+			             		t = data.length;
+			             		console.log("Antes do else")
+			             		setTimeout(renderiza, 5000);}
+		                }else{
+		                	console.log("Depois do else")
+		                    setTimeout(renderiza, 5000);
+		                     } 
+
+		                },
+		             error:function(){
+		             	alert('Ocorreu algum erro de conexão. Por favor, atualize a página!');
+		             }
+		             })
+		});
+		function estourar(elemento){
+			document.body.removeChild(elemento);
+		}
+    </script>
+</body>
+{% endblock %}

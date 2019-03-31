@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id='forms'>
+	<h1>Nova postagem</h1>
+	<form method="POST" class="post-form">{% csrf_token %}
+		<p><h3>Faça sua Pergunta:</h3></p>
+		{{ form.texto }}
+		<br>
+		<button type="submit" class="btn btn-success"><b><h2>Publica</h2></b></button>
+	</form>
+</div>
+<div id='btns'>
+ <button class='btn' id='mostre' style="height: 40px;"><b>Exibir a caixa de texto</b></button>
+ <button class='btn' id='esconde' style="height: 40px;"><b>Esconder a caixa de texto</b></button>
+ <button class='btn' id='escondebtn' style="height: 40px;"><b>Esconder os botões abaixo</b></button>
+ <button class='btn' id='mostrebtn' style="height: 40px;"><b>Exibir os botões abaixo</b></button>
+ 
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#mostre").hide()
+	$("#mostrebtn").hide()
+	$("#escondebtn").click(function(){
+        $(".menu").hide(1500);
+        $(this).hide()
+        $("#mostrebtn").show()
+    });
+    $("#esconde").click(function(){
+        $("#forms").hide(1500);
+        $(this).hide()
+        $("#mostre").show()
+    });
+    $("#mostre").click(function(){
+        $("#forms").show(1500);
+        $(this).hide()
+        $("#esconde").show()
+    });
+    $("#mostrebtn").click(function(){
+        $(".menu").show(1500);
+        $(this).hide()
+        $("#escondebtn").show()
+    });
+});
+		var n = 0;
+        var t = 0;
+        var i = 0;
+        var cor = '#';
+        var hexa = '0123456789abcdef';
+		$(document).ready(function renderiza(){
+			$.ajax({
+		             url : "http://127.0.0.1:8000/api",
+		             dataType: "json",
+		             success : function (data) {
+		             	if(n == 0 || t < data.length){
+		             		for(i = t; i < data.length; i ++){
+			             		var bola = document.createElement("div");
+			             		bola.setAttribute("class", "bola");
+			             		bola.setAttribute("style", "border: 2.0px solid black;width: 35%;background-color: " + "#7FBF3F;" + ";");
+			             		bola.innerHTML = "<p><h2><b>" + data[i].texto +"</h2></b></p>"+ "<button style='height: 40px; background-color: #7FBF3F'; onclick='estourar(this.div)';><b>Remova-me</b></button>";
+			             		$("body").append(bola);
+			             		bola.setAttribute("onclick", "estourar(this)");
+			             		bola.setAttribute("onMouseOver", "exibe(this)");
+			             		n = n + 1;
+			             		t = data.length;
+			             		console.log("Antes do else"+ cor)
+			             		setTimeout(renderiza, 5000);}
+		                }else{
+		                	console.log("Depois do else")
+		                    setTimeout(renderiza, 5000);
+		                     } 
+
+		                },
+		             error:function(){
+		             	alert('Ocorreu algum erro de conexão. Por favor, atualize a página!');
+		             }
+		             })
+		});
+		function estourar(elemento){
+			document.body.removeChild(elemento);
+		}
+		function exibe(elemento){
+			elemento.transform = 'scale(1.5)';
+			console.log("passou por cima!");
+		}
+    </script>
+</body>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<h1>Por favor, julgue os seguintes itens:</h1>
+<div id="post">
+	<form method="POST" class="post-form">{% csrf_token %}
+	<p><h3>Nome Completo:{{ form.nome }}
+	<br>
+	<p><h3>Email:{{ form.email }}
+	<br>
+	<p><h3>Limpeza:{{ form.limpeza }}
+	<br>
+	<p><h3>Organização:{{ form.organizacao }}
+	<br>
+	<p><h3>Coffe Break:{{ form.coffe_break }}
+	<br>
+	<p><h3>Tema:{{ form.tema }}
+	<br>
+	<p><h3>Sua sugestão, crítica ou observação:<br>{{ form.sugestao }}
+	<br>
+	<button type="submit" class="save btn btn-default">Enviar</button>
+	</form>
+	<br>
+	<br>
+</div>
+{% endblock %}

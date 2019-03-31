@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<title>Workshop - Genética</title>
+</head>
+<header>
+<div class="superior">
+<div class="logo">
+	<img src="{% static 'images/logo.png' %}" alt="logo"/>
+</div>
+</header>
+<body>
+</div>
+<div class="menu">
+	<div class="icone"><h3><a href="{% url 'avaliacao' %}"><h3>Avalia<br>Palestras</a></div>
+	<div class="icone"><h3><a href="{% url 'avalia_minicurso' %}"><h3>Avalia<br>mini-cursos<br></a></div>	
+	<div class="icone"><h3><a href="{% url 'avalia_evento' %}"><h3>Avalia<br>Evento</a></div>
+	<div class="icone"><h3><a href="{% url 'ajax_index' %}"><h3>Perguntas<br></a></div>
+{% if user.is_authenticated %}
+	<div class="icone"><h3><a href="{% url 'sorteio' %}"><h3>Sorteador<br></a></div>
+	<div class="icone"><h3><a href="{% url 'grafico_index' %}"><h3>Gráficos<br></a></div>
+{% endif %}	
+</div>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>
