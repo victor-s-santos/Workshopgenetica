@@ -45,8 +45,8 @@
 		var n = 0;
         var t = 0;
         var i = 0;
-        var cor = '#';
-        var hexa = '0123456789abcdef';
+        //var cor = '#';
+        //var hexa = '0123456789abcdef';
 		$(document).ready(function renderiza(){
 			$.ajax({
 		             url : "https://workshopgenetica.herokuapp.com/api/ajax/",
@@ -56,16 +56,16 @@
 		             		for(i = t; i < data.length; i ++){
 			             		var bola = document.createElement("div");
 			             		bola.setAttribute("class", "bola");
-			             		bola.setAttribute("style", "border: 2.0px solid black;width: 95%;background-color: " + "#7FBF3F;" + ";");
+			             		bola.setAttribute("style", "border: 2.0px solid black;width: 50%;background-color: " + "#7FBF3F;" + ";");
 			             		bola.innerHTML = "<p><h2><b>" + data[i].texto +"</h2></b></p>"+ "<button style='height: 40px; background-color: #7FBF3F'; onclick='estourar(this)';><b>Remova-me</b></button>";
 			             		$("body").append(bola);
 			             		bola.setAttribute("onclick", "estourar(this)");
 			             		n = n + 1;
 			             		t = data.length;
-			             		console.log("Antes do else"+ cor)
+			             		//console.log("Antes do else"+ cor)
 			             		setTimeout(renderiza, 5000);}
 		                }else{
-		                	console.log("Depois do else")
+		                	//console.log("Depois do else")
 		                    setTimeout(renderiza, 5000);
 		                     } 
 
