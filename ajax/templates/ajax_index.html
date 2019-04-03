@@ -48,19 +48,23 @@
 		var n = 0;
         var t = 0;
         var i = 0;
-		$(document).ready(function renderiza(){
-			$.ajax({
-		             url : "https://workshopgenetica.herokuapp.com/api/ajax/",
-		             dataType: "json",
-		             success : function (data) {
-		             	if (n == 0 || t < data.length){
+		$('.apireq').ready( function getdata() {
+            $.ajax({
+                     url : "http://127.0.0.1:8000/api/ajax/",
+                     dataType: "json",
+                     success : function (data) {
+                        //t = data.length ;
+                        console.log(data.length)
+                        //console.log(t)
+                        if (n == 0 || t < data.length){
                             for(i = t; i < data.length; i ++){
-			             		$(".p1").append("<li><h2>" + data[i].texto + "</h2></li>");
-	                            $(".p1").append("<br>");
-	                            n = n + 1
-	                            t = data.length
-			             		setTimeout(renderiza, 5000);}
-		                }else{
+                            $(".p1").append("<li>" + data[i].texto + "</li>");
+                            $(".p1").append("<br>");
+                            n = n + 1
+                            t = data.length
+                            setTimeout(getdata,5000);
+                                                      }
+                        }else{
 		                    setTimeout(renderiza, 5000);
 		                     } 
 
