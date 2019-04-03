@@ -4,8 +4,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Palestrante(models.Model):
 	nome = models.CharField(max_length=200)
-	id = models.IntegerField(primary_key=True)
 	data = models.DateField(auto_now_add=True)
+	id = models.IntegerField(primary_key=True)
 
 	class Meta:
 		verbose_name = 'Palestrante'
@@ -25,7 +25,7 @@ class Pontuacao(models.Model):
 	class Meta:
 		unique_together = ('palestrante', 'email')
 		verbose_name = 'Pontuação'
-		verbose_name_plural = 'Pontuações'
+		verbose_name_plural = 'Pontuações dos Palestrantes'
 
 	def __str__(self):
 		return str(self.pontuacao)
