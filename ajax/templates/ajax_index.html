@@ -54,7 +54,7 @@
                      dataType: "json",
                      success : function (data) {
                         //t = data.length ;
-                        console.log(data.length)
+                        //console.log(data.length)
                         //console.log(t)
                         if (n == 0 || t < data.length){
                             for(i = t; i < data.length; i ++){
@@ -65,7 +65,7 @@
                             setTimeout(getdata,5000);
                                                       }
                         }else{
-		                    setTimeout(renderiza, 5000);
+		                    setTimeout(getdata, 5000);
 		                     } 
 
 		                },
