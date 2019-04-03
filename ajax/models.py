@@ -8,3 +8,10 @@ class Perguntas(models.Model):
 	class Meta:
 		verbose_name = 'Pergunta'
 		verbose_name_plural = 'Perguntas'
+
+	def publish(self):
+		#self.data = timezone.now()
+		self.save()
+
+	def __str__(self):
+		return self.texto

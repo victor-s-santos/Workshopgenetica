@@ -50,7 +50,7 @@
         var i = 0;
 		$(document).ready( function getdata() {
             $.ajax({
-                     url : "https://workshopgenetica.herokuapp.com/api/ajax",
+                     url : "http://127.0.0.1:8000/api/ajax/",
                      dataType: "json",
                      success : function (data) {
                         //t = data.length ;
@@ -69,9 +69,6 @@
 		                     } 
 
 		                },
-		             error:function(){
-		             	alert('Ocorreu algum erro de conexão. Por favor, atualize a página!');
-		             }
 		             })
 		});
 		function estourar(elemento){
