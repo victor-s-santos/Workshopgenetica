@@ -44,6 +44,7 @@ a{
 
 .superior{
 	height: 80px;
+	padding-left: 85px;
 	background-color: rgb(1,0,0);
 	/*background-color: #100;*/
 	color: #FFF;
@@ -129,8 +130,4 @@ textarea{
 .bola{
   overflow:scroll;
   height: 0px auto;
-}
-
-.aqui{
-  float: left;
 }
