@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id='forms'>
+	<h1>Nova postagem</h1>
+	<form method="POST" class="post-form">{% csrf_token %}
+		<p><h3>Faça sua Pergunta:</h3></p>
+		{{ form.texto }}
+		<br>
+		<button type="submit" class="btn btn-success"><b><h2>Publica</h2></b></button>
+	</form>
+</div>
+<div id='btns'>
+ <button class='btn' id='mostre' style="height: 40px;"><b>Exibir a caixa de texto</b></button>
+ <button class='btn' id='esconde' style="height: 40px;"><b>Esconder a caixa de texto</b></button>
+ <button class='btn' id='escondebtn' style="height: 40px;"><b>Esconder os botões abaixo</b></button>
+ <button class='btn' id='mostrebtn' style="height: 40px;"><b>Exibir os botões abaixo</b></button>
+</div>
+<div class="aqui"></div>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#mostre").hide()
+	$("#mostrebtn").hide()
+	$("#escondebtn").click(function(){
+        $(".menu").hide(1500);
+        $(this).hide()
+        $("#mostrebtn").show()
+    });
+    $("#esconde").click(function(){
+        $("#forms").hide(1500);
+        $(this).hide()
+        $("#mostre").show()
+    });
+    $("#mostre").click(function(){
+        $("#forms").show(1500);
+        $(this).hide()
+        $("#esconde").show()
+    });
+    $("#mostrebtn").click(function(){
+        $(".menu").show(1500);
+        $(this).hide()
+        $("#escondebtn").show()
+    });
+});
+        var n = 0;
+        var t = 0;
+        var i = 0;
+        $('.apireq').ready( function getdata() {
+            $.ajax({
+                     url : "https://workshopgenetica.herokuapp.com/api/ajax/",
+                     dataType: "json",
+                     success : function (data) {
+                        //t = data.length ;
+                        //console.log(data.length)
+                        //console.log(t)
+                        if (n == 0 || t < data.length){
+                            for(i = t; i < data.length; i ++){
+                            $(".aqui").append("<li>" + data[i].texto + "</li>");
+                            $(".aqui").append("<br>");
+                            n = n + 1
+                            t = data.length
+                            setTimeout(getdata,5000);
+                                                      }
+                        }
+                        else{
+                            //console.log(data.length);
+                            //console.log(t);
+                            setTimeout(getdata,5000);
+                        }
+
+                            }
+
+                         });
+                     });    </script>
+</body>
+{% endblock %}

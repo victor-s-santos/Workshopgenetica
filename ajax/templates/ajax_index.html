@@ -42,35 +42,42 @@
         $("#escondebtn").show()
     });
 });
-        var n = 0;
+		var n = 0;
         var t = 0;
         var i = 0;
-        $('.apireq').ready( function getdata() {
-            $.ajax({
-                     url : "https://workshopgenetica.herokuapp.com/api/ajax/",
-                     dataType: "json",
-                     success : function (data) {
-                        //t = data.length ;
-                        //console.log(data.length)
-                        //console.log(t)
-                        if (n == 0 || t < data.length){
-                            for(i = t; i < data.length; i ++){
-                            $(".aqui").append("<li>" + data[i].texto + "</li>");
-                            $(".aqui").append("<br>");
-                            n = n + 1
-                            t = data.length
-                            setTimeout(getdata,5000);
-                                                      }
-                        }
-                        else{
-                            //console.log(data.length);
-                            //console.log(t);
-                            setTimeout(getdata,5000);
-                        }
+        //var cor = '#';
+        //var hexa = '0123456789abcdef';
+		$(document).ready(function renderiza(){
+			$.ajax({
+		             url : "https://workshopgenetica.herokuapp.com/api/ajax/",
+		             dataType: "json",
+		             success : function (data) {
+		             	if(n == 0 || t < data.length){
+		             		for(i = t; i < data.length; i ++){
+			             		var bola = document.createElement("div");
+			             		bola.setAttribute("class", "bola");
+			             		bola.setAttribute("style", "border: 2.0px solid black;width: 50%;background-color: " + "#7FBF3F;" + ";");
+			             		bola.innerHTML = "<p><h2><b>" + data[i].texto +"</h2></b></p>"+ "<button style='height: 40px; background-color: #7FBF3F'; onclick='estourar(this)';><b>Remova-me</b></button>";
+			             		$("body").append(bola);
+			             		bola.setAttribute("onclick", "estourar(this)");
+			             		n = n + 1;
+			             		t = data.length;
+			             		//console.log("Antes do else"+ cor)
+			             		setTimeout(renderiza, 5000);}
+		                }else{
+		                	//console.log("Depois do else")
+		                    setTimeout(renderiza, 5000);
+		                     } 
 
-                            }
-
-                         });
-                     });    </script>
+		                },
+		             error:function(){
+		             	alert('Ocorreu algum erro de conexão. Por favor, atualize a página!');
+		             }
+		             })
+		});
+		function estourar(elemento){
+			document.body.removeChild(elemento);
+		}
+    </script>
 </body>
 {% endblock %}
