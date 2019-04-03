@@ -4,22 +4,19 @@
 <div id='forms'>
 	<h1>Nova postagem</h1>
 	<form method="POST" class="post-form">{% csrf_token %}
-		{{ form.as_p }}
+		<p><h3>Faça sua Pergunta:</h3></p>
+		{{ form.texto }}
+		<br>
 		<button type="submit" class="btn btn-success"><b><h2>Publica</h2></b></button>
 	</form>
 </div>
 <div id='btns'>
- <button class='btn' id='mostre'>Exibir a caixa de texto</button>
- <button class='btn' id='esconde'>Esconder a caixa de texto.</button>
- <button class='btn' id='escondebtn'>Esconder os botões abaixo.</button>
- <button class='btn' id='mostrebtn'>Exibir os botões abaixo.</button>
- 
+ <button class='btn' id='mostre' style="height: 40px;"><b>Exibir a caixa de texto</b></button>
+ <button class='btn' id='esconde' style="height: 40px;"><b>Esconder a caixa de texto</b></button>
+ <button class='btn' id='escondebtn' style="height: 40px;"><b>Esconder os botões abaixo</b></button>
+ <button class='btn' id='mostrebtn' style="height: 40px;"><b>Exibir os botões abaixo</b></button>
 </div>
-<p class='p1'></p>
-<br>
-<br>
-<br>
-<br>
+<div class="aqui"></div>
 <script type="text/javascript">
 	$(document).ready(function(){
 	$("#mostre").hide()
@@ -48,20 +45,27 @@
 		var n = 0;
         var t = 0;
         var i = 0;
+        //var cor = '#';
+        //var hexa = '0123456789abcdef';
 		$(document).ready(function renderiza(){
 			$.ajax({
-		             url : "http://127.0.0.1:8000/api/ajax",
+		             url : "https://workshopgenetica.herokuapp.com/api/ajax/",
 		             dataType: "json",
 		             success : function (data) {
-		             	if (n == 0 || t < data.length){
-                            for(i = t; i < data.length; i ++){
-			             		$(".p1").append("<li><h2>" + data[i].texto + "</h2></li>");
-	                            $(".p1").append("<br>");
-	                            n = n + 1
-	                            t = data.length
+		             	if(n == 0 || t < data.length){
+		             		for(i = t; i < data.length; i ++){
+			             		var bola = document.createElement("div");
+			             		bola.setAttribute("class", "bola");
+			             		bola.setAttribute("style", "border: 2.0px solid black;width: 50%;background-color: " + "#7FBF3F;" + ";");
+			             		bola.innerHTML = "<p><h2><b>" + data[i].texto +"</h2></b></p>"+ "<button style='height: 40px; background-color: #7FBF3F'; onclick='estourar(this)';><b>Remova-me</b></button>";
+			             		$("body").append(bola);
+			             		bola.setAttribute("onclick", "estourar(this)");
+			             		n = n + 1;
+			             		t = data.length;
+			             		//console.log("Antes do else"+ cor)
 			             		setTimeout(renderiza, 5000);}
 		                }else{
-		                	console.log("Depois do else")
+		                	//console.log("Depois do else")
 		                    setTimeout(renderiza, 5000);
 		                     } 
 
