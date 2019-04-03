@@ -1,7 +1,7 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
 from ajax.models import Perguntas
 
-class PerguntasSerializer(serializers.ModelSerializer):
+class PerguntasSerializer(ModelSerializer):
 	class Meta:
 		model = Perguntas
-		fields = '__all__'
+		fields = ('id', 'texto')

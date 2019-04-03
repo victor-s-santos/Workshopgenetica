@@ -47,12 +47,11 @@
         var i = 0;
         $('.apireq').ready( function getdata() {
             $.ajax({
-                     url : "https://workshopgenetica.herokuapp.com/api/ajax/",
-                     type:'GET',
+                     url : "http://127.0.0.1:8000/api/ajax/",
                      dataType: "json",
                      success : function (data) {
                         //t = data.length ;
-                        console.log(data.length)
+                        //console.log(data.length)
                         //console.log(t)
                         if (n == 0 || t < data.length){
                             for(i = t; i < data.length; i ++){
