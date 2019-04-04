@@ -50,7 +50,7 @@ class EventoAdmin(ImportExportModelAdmin):
 	resource_class = EventoResource
 	date_hierarchy = 'data'
 	list_filter = ['data','limpeza', 'organizacao', 'coffe_break', 'tema']
-	list_display = ['nome', 'limpeza', 'organizacao', 'coffe_break', 'tema', 'data']
+	list_display = ['nome', 'limpeza', 'organizacao', 'coffe_break', 'tema', 'sugestao', 'data']
 
 	
 admin.site.register(Palestrante, PalestranteAdmin)

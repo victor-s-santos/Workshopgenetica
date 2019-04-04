@@ -16,6 +16,7 @@
  <button class='btn' id='escondebtn' style="height: 40px;"><b>Esconder os botões abaixo</b></button>
  <button class='btn' id='mostrebtn' style="height: 40px;"><b>Exibir os botões abaixo</b></button>
 </div>
+<br>
 <div class="aqui"></div>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -49,15 +50,15 @@
         //var hexa = '0123456789abcdef';
 		$(document).ready(function renderiza(){
 			$.ajax({
-		             url : "https://workshopgenetica.herokuapp.com/api/ajax/",
+		             url : "https://workshopgenetica.herokuapp.com/api/ajax",
 		             dataType: "json",
 		             success : function (data) {
 		             	if(n == 0 || t < data.length){
 		             		for(i = t; i < data.length; i ++){
 			             		var bola = document.createElement("div");
 			             		bola.setAttribute("class", "bola");
-			             		bola.setAttribute("style", "border: 2.0px solid black;width: 50%;background-color: " + "#7FBF3F;" + ";");
-			             		bola.innerHTML = "<p><h2><b>" + data[i].texto +"</h2></b></p>"+ "<button style='height: 40px; background-color: #7FBF3F'; onclick='estourar(this)';><b>Esconda-me</b></button>";
+			             		bola.setAttribute("style", "border: 2.0px solid black;width: 50%;background-color: " + "#FFFACD;" + ";");
+			             		bola.innerHTML = "<p><h2><b>" + data[i].texto +"</h2></b></p>"+ "<button style='height: 40px; background-color: #F0E68C;' onclick='estourar(this)';><b>Esconda-me</b></button>";
 			             		$("body").append(bola);
 			             		bola.setAttribute("onclick", "estourar(this)");
 			             		n = n + 1;
