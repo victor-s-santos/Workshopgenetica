@@ -6,15 +6,19 @@
 	<form method="POST" class="post-form">{% csrf_token %}
 	<p><h3>Nome Completo:{{ form.nome }}
 	<br>
-	<p><h3>Email:{{ form.email }}
-	<br>
-	<p><h3>Limpeza:{{ form.limpeza }}
-	<br>
 	<p><h3>Organização:{{ form.organizacao }}
 	<br>
-	<p><h3>Coffe Break:{{ form.coffe_break }}
+	<p><h3>Divulgação:{{ form.divulgacao }}
 	<br>
-	<p><h3>Tema:{{ form.tema }}
+	<p><h3>Coffee Break :{{ form.coffe_break }}
+	<br>
+	<p><h3>Palestras:{{ form.palestras }}
+	<br>
+	<p><h3>Open Lab:{{ form.open_lab }}
+	<br>
+	<p><h3>Indicação:{{ form.indicacao }}
+	<br>
+	<p><h3>Retorno:{{ form.retorno }}
 	<br>
 	<p><h3>Sua sugestão, crítica ou observação:<br>{{ form.sugestao }}
 	<br>
