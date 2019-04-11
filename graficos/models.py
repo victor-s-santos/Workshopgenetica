@@ -54,8 +54,8 @@ class Evento(models.Model):
 
 class MiniCursos(models.Model):
 	minicurso = models.CharField(blank=False, null=False, max_length=300)
-	ministrante = models.CharField(blank=False, null=False, max_length=300)
 	data = models.DateField(auto_now_add=True)
+	id = models.IntegerField(primary_key=True)
 
 	class Meta:
 		verbose_name = 'mini_curso'
@@ -76,6 +76,7 @@ class PontuacaoMinicursos(models.Model):
 	sugestao = models.TextField(blank=True, null=True)
 	data = models.DateField(auto_now_add=True)
 	
+
 	class Meta:
 		unique_together = ('minicurso', 'nome')
 		verbose_name = 'Pontuação Minicurso'

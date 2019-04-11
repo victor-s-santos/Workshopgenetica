@@ -26,8 +26,8 @@ class PalestranteAdmin(admin.ModelAdmin):
 
 class MiniCursosAdmin(admin.ModelAdmin):
 	date_hierarchy = 'data'
-	list_filter = ['minicurso', 'ministrante']
-	list_display = ['minicurso', 'ministrante', 'data']
+	list_filter = ['minicurso']
+	list_display = ['minicurso', 'data']
 
 class PontuacaoMinicursosResource(resources.ModelResource):
 	class Meta:

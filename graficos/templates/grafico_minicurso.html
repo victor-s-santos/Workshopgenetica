@@ -1,28 +1,36 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
 {% block content %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
 <canvas id="personChart" width="250" height="150"></canvas>
 <script>
 var ctx = document.getElementById("personChart");
-var organizacao = JSON.parse('{{ organizacao|safe }}');
-var divulgacao = JSON.parse('{{ divulgacao|safe }}');
-var coffe_break = JSON.parse('{{ coffe_break|safe }}');
-var palestras = JSON.parse('{{ palestras|safe }}');
-var open_lab = JSON.parse('{{ open_lab|safe }}');
-var indicacao = JSON.parse('{{ indicacao|safe }}');
-var retorno = JSON.parse('{{ retorno|safe }}');
-var lista = [organizacao, divulgacao, coffe_break, palestras, open_lab, indicacao, retorno];
-var nomes = ['Organização', 'Divulgação', 'Coffe break', 'Palestras', 'Open Lab', 'Indicação', 'Retorno'];
+var minicurso1 = JSON.parse('{{ minicurso1|safe }}');
+var pontuacao1 = JSON.parse('{{ pontuacao1|safe }}');
+
+var minicurso2 = JSON.parse('{{ minicurso2|safe }}');
+var pontuacao2 = JSON.parse('{{ pontuacao2|safe }}');
+
+var minicurso3 = JSON.parse('{{ minicurso3|safe }}');
+var pontuacao3 = JSON.parse('{{ pontuacao3|safe }}');
+
+var minicurso4 = JSON.parse('{{ minicurso4|safe }}');
+var pontuacao4 = JSON.parse('{{ pontuacao4|safe }}');
+
+var minicurso5 = JSON.parse('{{ minicurso5|safe }}');
+var pontuacao5 = JSON.parse('{{ pontuacao5|safe }}');
+
+var lista = [minicurso1, minicurso2, minicurso3, minicurso4, minicurso5];
+var pontuacao = [pontuacao1, pontuacao2, pontuacao3, pontuacao4, pontuacao5];
 Chart.defaults.global.defaultFontStyle = 'Bold';
 Chart.defaults.global.defaultFontSize = 16;
 var personChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: nomes,
+        labels: lista,
         datasets: [{
             label: 'Avaliação',
-            data: lista,
+            data: pontuacao,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

@@ -187,3 +187,85 @@ def grafico_geral(request):
 
 
 	return render(request, 'grafico_geral.html', context)
+
+@login_required(login_url='/admin/')	
+def grafico_minicurso(request):
+	d = timezone.now()
+	x = d.strftime("%Y")
+
+	try:
+		minicurso1 = MiniCursos.objects.filter(id=1)
+		minicurso1 = [obj.minicurso for obj in minicurso1]
+	except:
+		minicurso1 = 'Minicurso1'
+
+	try:	
+		minicurso2 = MiniCursos.objects.filter(id=2)
+		minicurso2 = [obj.minicurso for obj in minicurso2]
+	except:
+		minicurso2 = 'Minicurso2'
+
+	try:
+		minicurso3 = MiniCursos.objects.filter(id=3)
+		minicurso3 = [obj.minicurso for obj in minicurso3]
+	except:
+		minicurso3 = 'Minicurso3'
+
+	try:	
+		minicurso4 = MiniCursos.objects.filter(id=4)
+		minicurso4 = [obj.minicurso for obj in minicurso4]
+	except:
+		minicurso4 = 'Minicurso4'
+
+	try:	
+		minicurso5 = MiniCursos.objects.filter(id=5)
+		minicurso5 = [obj.minicurso for obj in minicurso5]
+	except:
+		minicurso5 = 'Minicurso5'
+
+
+
+	try:
+		pontuacao1 = float(PontuacaoMinicursos.objects.filter(minicurso=1, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao1 = 0
+	
+	try:
+		pontuacao2 = float(PontuacaoMinicursos.objects.filter(minicurso=2, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao2 = 0
+
+	try:
+		pontuacao3 = float(PontuacaoMinicursos.objects.filter(minicurso=3, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao3 = 0
+	
+	try:
+		pontuacao4 = float(PontuacaoMinicursos.objects.filter(minicurso=4, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao4 = 0
+
+	try:
+		pontuacao5 = float(PontuacaoMinicursos.objects.filter(minicurso=5, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao5 = 0
+
+
+	context = {
+		'minicurso1' : json.dumps(minicurso1),
+		'pontuacao1': json.dumps(pontuacao1),
+		
+		'minicurso2' : json.dumps(minicurso2),
+		'pontuacao2': json.dumps(pontuacao2),
+		
+		'minicurso3' : json.dumps(minicurso3),
+		'pontuacao3': json.dumps(pontuacao3),
+		
+		'minicurso4' : json.dumps(minicurso4),
+		'pontuacao4': json.dumps(pontuacao4),
+		
+		'minicurso5' : json.dumps(minicurso5),
+		'pontuacao5': json.dumps(pontuacao5),		
+	}
+
+	return render(request, 'grafico_minicurso.html', context)
