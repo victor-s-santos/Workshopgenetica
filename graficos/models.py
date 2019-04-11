@@ -32,11 +32,13 @@ class Pontuacao(models.Model):
 
 class Evento(models.Model):
 	nome = models.CharField(blank=False, null=False, max_length=200)
-	limpeza = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
 	organizacao = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
+	divulgacao = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
 	coffe_break = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
-	tema = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
-	email = models.EmailField(max_length=200, blank=False, null=False, unique=True)
+	palestras = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
+	open_lab = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
+	indicacao = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
+	retorno = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
 	sugestao = models.TextField(blank=True, null=True)
 	data = models.DateField(auto_now_add=True)
 

@@ -33,20 +33,55 @@ def grafico_palestrantes(request):
 		palestrante3 = [obj.nome for obj in palestrante3]
 	except:
 		palestrante3 = 'Palestrante'
-	
+
+	try:
+		palestrante4 = Palestrante.objects.filter(id=4)
+		palestrante4 = [obj.nome for obj in palestrante4]
+	except:
+		palestrante4 = 'Palestrante'
+
+	try:	
+		palestrante5 = Palestrante.objects.filter(id=5)
+		palestrante5 = [obj.nome for obj in palestrante5]
+	except:
+		palestrante5 = 'Palestrante'
+
+	try:
+		palestrante6 = Palestrante.objects.filter(id=6)
+		palestrante6 = [obj.nome for obj in palestrante6]
+	except:
+		palestrante6 = 'Palestrante'	
+
 
 	try:
 		pontuacao1 = float(Pontuacao.objects.filter(palestrante=1, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
 	except:
 		pontuacao1 = 0
+	
 	try:
 		pontuacao2 = float(Pontuacao.objects.filter(palestrante=2, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
 	except:
 		pontuacao2 = 0
+	
 	try:
 		pontuacao3 = float(Pontuacao.objects.filter(palestrante=3, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
 	except:
 		pontuacao3 = 0
+	
+	try:
+		pontuacao4 = float(Pontuacao.objects.filter(palestrante=4, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao4 = 0
+	
+	try:
+		pontuacao5 = float(Pontuacao.objects.filter(palestrante=5, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao5 = 0
+	
+	try:
+		pontuacao6 = float(Pontuacao.objects.filter(palestrante=6, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao6 = 0		
 	
 	context = {
 		'palestrante1' : json.dumps(palestrante1),
@@ -54,10 +89,14 @@ def grafico_palestrantes(request):
 		'palestrante2' : json.dumps(palestrante2),
 		'pontuacao2': json.dumps(pontuacao2),
 		'palestrante3' : json.dumps(palestrante3),
-		'pontuacao3': json.dumps(pontuacao3)
+		'pontuacao3': json.dumps(pontuacao3),
+		'palestrante4' : json.dumps(palestrante4),
+		'pontuacao4': json.dumps(pontuacao4),
+		'palestrante5' : json.dumps(palestrante5),
+		'pontuacao5': json.dumps(pontuacao5),
+		'palestrante6' : json.dumps(palestrante6),
+		'pontuacao6': json.dumps(pontuacao6),		
 	}
-
-
 	return render(request, 'grafico_palestrantes.html', context)
 
 def avalia(request):
@@ -107,9 +146,9 @@ def grafico_geral(request):
 		organizacao = 0
 
 	try:
-		limpeza = Evento.objects.filter(data__year=x).values('limpeza').aggregate(Avg('limpeza')).get('limpeza__avg')
+		divulgacao = Evento.objects.filter(data__year=x).values('divulgacao').aggregate(Avg('divulgacao')).get('divulgacao__avg')
 	except:
-		limpeza = 0
+		divulgacao = 0
 
 	try:
 		coffe_break = Evento.objects.filter(data__year=x).values('coffe_break').aggregate(Avg('coffe_break')).get('coffe_break__avg')
@@ -117,17 +156,34 @@ def grafico_geral(request):
 		coffe_break = 0
 
 	try:
-		tema = Evento.objects.filter(data__year=x).values('tema').aggregate(Avg('tema')).get('tema__avg')
+		palestras = Evento.objects.filter(data__year=x).values('palestras').aggregate(Avg('palestras')).get('palestras__avg')
 	except:
-		tema = 0
+		palestras = 0
+
+	try:
+		open_lab = Evento.objects.filter(data__year=x).values('open_lab').aggregate(Avg('open_lab')).get('open_lab__avg')
+	except:
+		open_lab = 0
+
+	try:
+		indicacao = Evento.objects.filter(data__year=x).values('indicacao').aggregate(Avg('indicacao')).get('indicacao__avg')
+	except:
+		indicacao = 0
+
+	try:
+		retorno = Evento.objects.filter(data__year=x).values('retorno').aggregate(Avg('retorno')).get('retorno__avg')
+	except:
+		retorno = 0
 
 	context = {
 		'organizacao' : json.dumps(organizacao),
-		'limpeza': json.dumps(limpeza),
+		'divulgacao': json.dumps(divulgacao),
 		'coffe_break' : json.dumps(coffe_break),
-		'tema': json.dumps(tema),
+		'palestras': json.dumps(palestras),
+		'open_lab' : json.dumps(open_lab),
+		'indicacao' : json.dumps(indicacao),
+		'retorno' : json.dumps(retorno),
 	}
 
 
 	return render(request, 'grafico_geral.html', context)
-

@@ -44,13 +44,13 @@ class PontuacaoMinicursosAdmin(ImportExportModelAdmin):
 class EventoResource(resources.ModelResource):
 	class Meta:
 		model = Evento
-		fields = ('nome', 'limpeza', 'organizacao', 'coffe_break', 'tema', 'sugestao')
+		fields = ('nome', 'organizacao', 'divulgacao', 'coffe_break', 'palestras','open_lab', 'indicacao', 'retorno', 'sugestao')
 
 class EventoAdmin(ImportExportModelAdmin):
-	resource_class = EventoResource
-	date_hierarchy = 'data'
-	list_filter = ['data','limpeza', 'organizacao', 'coffe_break', 'tema']
-	list_display = ['nome', 'limpeza', 'organizacao', 'coffe_break', 'tema', 'sugestao', 'data']
+		resource_class = EventoResource
+		date_hierarchy = 'data'
+		list_filter = ['organizacao', 'divulgacao', 'coffe_break', 'palestras','open_lab', 'indicacao', 'retorno']
+		list_display = ['organizacao', 'divulgacao', 'coffe_break', 'palestras','open_lab', 'indicacao', 'retorno', 'sugestao', 'data']
 
 	
 admin.site.register(Palestrante, PalestranteAdmin)

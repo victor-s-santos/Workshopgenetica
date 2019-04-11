@@ -6,11 +6,14 @@
 <script>
 var ctx = document.getElementById("personChart");
 var organizacao = JSON.parse('{{ organizacao|safe }}');
-var limpeza = JSON.parse('{{ limpeza|safe }}');
-var coffe_break = JSON.parse('{{ coffe_break|safe }}')
-var tema = JSON.parse('{{ tema|safe }}')
-var lista = [organizacao, limpeza, coffe_break, tema]
-var nomes = ['Organização', 'Limpeza', 'Coffe break', 'Tema']
+var divulgacao = JSON.parse('{{ divulgacao|safe }}');
+var coffe_break = JSON.parse('{{ coffe_break|safe }}');
+var palestras = JSON.parse('{{ palestras|safe }}');
+var open_lab = JSON.parse('{{ open_lab|safe }}');
+var indicacao = JSON.parse('{{ indicacao|safe }}');
+var retorno = JSON.parse('{{ retorno|safe }}');
+var lista = [organizacao, divulgacao, coffe_break, palestras, open_lab, indicacao, retorno];
+var nomes = ['Organização', 'Divulgação', 'Coffe break', 'Palestras', 'Open Lab', 'Indicação', 'Retorno'];
 Chart.defaults.global.defaultFontStyle = 'Bold';
 Chart.defaults.global.defaultFontSize = 16;
 var personChart = new Chart(ctx, {
