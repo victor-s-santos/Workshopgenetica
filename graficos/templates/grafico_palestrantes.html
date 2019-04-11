@@ -3,6 +3,12 @@
 {% block content %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
 <canvas id="personChart" width="250" height="150"></canvas>
+<p>Palestrante1: {{ palestrante1}}<br>
+<p>Palestrante2: {{ palestrante2}}<br>
+<p>Palestrante3: {{ palestrante3}}<br>
+<p>Palestrante4: {{ palestrante4}}<br>
+<p>Palestrante5: {{ palestrante5}}<br>
+<p>Palestrante6: {{ palestrante6}}<br>
 <script>
 var ctx = document.getElementById("personChart");
 var palestrante1 = JSON.parse('{{ palestrante1|safe }}');
@@ -11,7 +17,6 @@ var palestrante2 = JSON.parse('{{ palestrante2|safe }}');
 var pontuacao2 = JSON.parse('{{ pontuacao2|safe }}');
 var palestrante3 = JSON.parse('{{ palestrante3|safe }}');
 var pontuacao3 = JSON.parse('{{ pontuacao3|safe }}');
-
 var palestrante4 = JSON.parse('{{ palestrante4|safe }}');
 var pontuacao4 = JSON.parse('{{ pontuacao4|safe }}');
 var palestrante5 = JSON.parse('{{ palestrante5|safe }}');
@@ -19,15 +24,16 @@ var pontuacao5 = JSON.parse('{{ pontuacao5|safe }}');
 var palestrante6 = JSON.parse('{{ palestrante6|safe }}');
 var pontuacao6 = JSON.parse('{{ pontuacao6|safe }}');
 var lista = [palestrante1, palestrante2, palestrante3, palestrante4, palestrante5, palestrante6];
+var lista2 = ["palestrante1", "palestrante2", "palestrante3", "palestrante4", "palestrante5", "palestrante6"];
 var pontuacao = [pontuacao1, pontuacao2, pontuacao3, pontuacao4, pontuacao5, pontuacao6];
 Chart.defaults.global.defaultFontStyle = 'Bold';
 Chart.defaults.global.defaultFontSize = 16;
 var personChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: lista,
+        labels: lista2,
         datasets: [{
-            label: 'Palestrantes',
+            label: 'Avaliação',
             data: pontuacao,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

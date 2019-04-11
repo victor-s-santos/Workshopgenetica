@@ -3,6 +3,11 @@
 {% block content %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
 <canvas id="personChart" width="250" height="150"></canvas>
+<p>Minicurso1: {{ minicurso1}}<br>
+<p>Minicurso2: {{ minicurso2}}<br>
+<p>Minicurso3: {{ minicurso3}}<br>
+<p>Minicurso4: {{ minicurso4}}<br>
+<p>Minicurso5: {{ minicurso5}}<br>
 <script>
 var ctx = document.getElementById("personChart");
 var minicurso1 = JSON.parse('{{ minicurso1|safe }}');
