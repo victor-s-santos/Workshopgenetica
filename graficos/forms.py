@@ -21,7 +21,7 @@ class EventoForm(forms.ModelForm):
 class PontuacaoMinicursosForm(forms.ModelForm):
 	class Meta:
 		model = PontuacaoMinicursos
-		fields = '__all__'
+		fields = ('minicurso', 'nome', 'email', 'pontuacao', 'sugestao')
 
 	def __init__(self, *args, **kwargs):
 		super(PontuacaoMinicursosForm, self).__init__(*args, **kwargs)

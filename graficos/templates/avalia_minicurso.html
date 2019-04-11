@@ -6,17 +6,14 @@
 	<form method="POST" class="post-form">{% csrf_token %}
 	<p><h3>Nome Completo:{{ form.nome }}
 	<br>
-	<p><h3>Email:{{ form.email }}
+	<p><h3>Email (opcional):{{ form.email }}
 	<br>
 	<p><h3>Minicurso:{{ form.minicurso }}
 	<br>
-	<p><h3>Pontuação em função da clareza:{{ form.clareza }}
+	<p><h3>Nota:{{ form.pontuacao }}
 	<br>
-	<p><h3>Pontuação em função do tempo:{{ form.tempo }}
-	<br>
-	<p><h3>Pontuação em função do tema:{{ form.tema }}
-	<br>
-	<p><h3>Pontuação em função da relevância:{{ form.relevancia }}
+	<p><h3>Sugestão (opcional):
+	<br>{{ form.sugestao }}
 	<br>
 	<button type="submit" class="save btn btn-default"><h1>Enviar</h1></button>
 	</form>

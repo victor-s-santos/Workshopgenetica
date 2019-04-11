@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = ['workshopgenetica.herokuapp.com', 'localhost', '127.0.0.1', '192.168.0.5']
+ALLOWED_HOSTS = ['workshopgenetica.herokuapp.com', 'localhost', '127.0.0.1', '192.168.1.103']
 
 
 # Application definition

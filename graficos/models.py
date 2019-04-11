@@ -18,7 +18,7 @@ class Pontuacao(models.Model):
 	palestrante = models.ForeignKey(Palestrante, related_name='palesta', on_delete=models.CASCADE)
 	pontuacao = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
 	nome = models.CharField(max_length=800)
-	email = models.EmailField(max_length=200, blank=False, null=False)
+	email = models.EmailField(max_length=200, blank=True, null=True)
 	sugestao = models.TextField(blank=True, null=True)
 	data = models.DateField(auto_now_add=True)
 	id = models.AutoField(primary_key=True)
@@ -67,15 +67,17 @@ class MiniCursos(models.Model):
 class PontuacaoMinicursos(models.Model):
 	minicurso = models.ForeignKey(MiniCursos, on_delete=models.CASCADE)
 	nome = models.CharField(blank=False, null=False, max_length=200)
-	email = models.EmailField(max_length=200, blank=False, null=False, unique=True)
+	email = models.EmailField(max_length=200, blank=True, null=True)
+	pontuacao = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
 	clareza = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
 	tempo = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
 	tema = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
 	relevancia = models.IntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(10)])
+	sugestao = models.TextField(blank=True, null=True)
 	data = models.DateField(auto_now_add=True)
 	
 	class Meta:
-		unique_together = ('minicurso', 'email')
+		unique_together = ('minicurso', 'nome')
 		verbose_name = 'Pontuação Minicurso'
 		verbose_name_plural = 'Pontuações Minicurso'
 

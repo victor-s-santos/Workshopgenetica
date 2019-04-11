@@ -32,14 +32,14 @@ class MiniCursosAdmin(admin.ModelAdmin):
 class PontuacaoMinicursosResource(resources.ModelResource):
 	class Meta:
 		model = PontuacaoMinicursos
-		fields = ('minicurso__minicurso', 'nome', 'clareza', 'tempo', 'tema', 'relevancia')
+		fields = ('minicurso__minicurso', 'nome','email', 'pontuacao', 'sugestao', 'data')
 
 class PontuacaoMinicursosAdmin(ImportExportModelAdmin):
 	resource_class = PontuacaoMinicursosResource
 	date_hierarchy = 'data'
 	search_fields = ['data', 'minicurso']
-	list_filter = ['data', 'minicurso', 'clareza', 'tempo', 'tema', 'relevancia']
-	list_display = ['minicurso', 'clareza', 'tempo', 'tema', 'relevancia', 'email', 'data']
+	list_filter = ['data', 'minicurso', 'pontuacao', 'minicurso']
+	list_display = ['minicurso', 'nome','email', 'pontuacao', 'sugestao', 'data']
 
 class EventoResource(resources.ModelResource):
 	class Meta:
