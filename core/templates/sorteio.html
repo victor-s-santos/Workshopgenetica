@@ -1,15 +1,33 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-	<h1><p>Lista com todos os nomes das pessoas que avaliaram ao menos uma palestra:</p></h1>
-	<h2><p>{{ lista_nomes }}</p></h2><!-- melhorar isso com um laço -->
+	<h2><p>Nomes das pessoas que avaliaram a área:</p></h2>
+	{% for nomes in lista_pontuacao %}
+		{{ nomes.nome }},
+	{% endfor %}
+	<h2><p>Nomes das pessoas que avaliaram o evento:</p></h2>
+	{% for nomes in lista_evento %}
+		{{ nomes.nome }},
+	{% endfor %}
+	<h1><p>O sorteado foi:</p></h1>
+	<div id='escolhido' style = "display:none">
+		<p id='escolhido'><h2>Parabéns<br>{{ escolhido }}</br>você foi o ganhador do sorteio!</p>
+	</div>
+	<button onclick="aparece()">Sorteio 1!</button>
 	<br>
 	<br>
 	<h1><p>O sorteado foi:</p></h1>
-	<div id='escolhido' style = "display:none">
-		<p id='escolhido2'><h2>Parabéns<br>{{ escolhido }}</br> ,você foi o ganhador do sorteio!</p>
+	<div id='escolhido3' style = "display:none">
+		<p id='escolhido3'><h2>Parabéns<br>{{ escolhido }}</br>você foi o ganhador do sorteio!</p>
 	</div>
-<button onclick="aparece()">Aperte-me!</button>
+	<button onclick="aparece3()">Sorteio 2!</button>
+	<br>
+	<br>
+	<h1><p>O sorteado foi:</p></h1>
+	<div id='escolhido2' style = "display:none">
+		<p id='escolhido2'><h2>Parabéns<br>{{ escolhido2 }}</br>você foi o ganhador do sorteio!</p>
+	</div>
+	<button onclick="aparece2()">Sorteio 3!</button>
 <br>
 <br>
 <br>
@@ -28,6 +46,23 @@ function aparece() {
 			$('#escolhido').fadeIn(1200);
 			//div.style.display = "block";
 
+			i = i + 1	
+		}
+	}
+function aparece2() {
+	var div = document.getElementById('escolhido2');
+		if(i == 0){
+			$('#escolhido2').fadeIn(1200);
+			//div.style.display = "block";
+			i = i + 1	
+		}
+	}
+
+function aparece3() {
+	var div = document.getElementById('escolhido3');
+		if(i == 0){
+			$('#escolhido3').fadeIn(1200);
+			//div.style.display = "block";
 			i = i + 1	
 		}
 	}

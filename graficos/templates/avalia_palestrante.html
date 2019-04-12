@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-<h1>Nova avaliação<br><h2>(Notas de 0 a 10)</h2></h1>
+<h1>Sua opinião<br><h2>(Notas de 0 a 10)</h2></h1>
+<h3>Gostaríamos de saber sobre o seu interesse por área.</h3> 
 <div id="post">
 	<form method="POST" class="post-form">{% csrf_token %}
 	<p><h3>Nome Completo:{{ form.nome }}
 	<br>
 	<p><h3>Email (opcional):{{ form.email }}
 	<br>
-	<p><h3>Palestrante:{{ form.palestrante }}
+	<p><h3>Área:{{ form.palestrante }}
 	<br>
-	<p><h3>Pontuação:{{ form.pontuacao }}
+	<p><h3>Interesse:{{ form.pontuacao }}
 	<br>
 	<p><h3>Sua sugestão, crítica ou observação:<br>{{ form.sugestao }}
 	<br>

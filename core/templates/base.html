@@ -16,9 +16,9 @@
 <body>
 </div>
 <div class="menu">
-	<div class="icone"><h3><a href="{% url 'avaliacao' %}"><h3>Avalia<br>Palestras</a></div>
+	<div class="icone"><h3><a href="{% url 'avalia_evento' %}"><h3>Sorteio<br>Final</a></div>	
 	<div class="icone"><h3><a href="{% url 'avalia_minicurso' %}"><h3>Avalia<br>mini-cursos<br></a></div>	
-	<div class="icone"><h3><a href="{% url 'avalia_evento' %}"><h3>Avalia<br>Evento</a></div>
+	<div class="icone"><h3><a href="{% url 'avaliacao' %}"><h3>Sorteio<br>Inicial</a></div>
 	<div class="icone"><h3><a href="{% url 'ajax_index' %}"><h3>Perguntas<br></a></div>
 {% if user.is_authenticated %}
 	<div class="icone"><h3><a href="{% url 'sorteio' %}"><h3>Sorteador<br></a></div>

@@ -3,12 +3,16 @@
 {% block content %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.js"></script>
 <canvas id="personChart" width="250" height="150"></canvas>
-<p>Palestrante1: {{ palestrante1}}<br>
-<p>Palestrante2: {{ palestrante2}}<br>
-<p>Palestrante3: {{ palestrante3}}<br>
-<p>Palestrante4: {{ palestrante4}}<br>
-<p>Palestrante5: {{ palestrante5}}<br>
-<p>Palestrante6: {{ palestrante6}}<br>
+<p>Area1: {{ palestrante1}}<br>
+<p>Area2: {{ palestrante2}}<br>
+<p>Area3: {{ palestrante3}}<br>
+<p>Area4: {{ palestrante4}}<br>
+<p>Area5: {{ palestrante5}}<br>
+<p>Area6: {{ palestrante6}}<br>
+<p>Area7: {{ palestrante7}}<br>
+<p>Area8: {{ palestrante8}}<br>
+<p>Area9: {{ palestrante9}}<br>
+<p>Area10: {{ palestrante10}}<br>
 <script>
 var ctx = document.getElementById("personChart");
 var palestrante1 = JSON.parse('{{ palestrante1|safe }}');
@@ -23,9 +27,18 @@ var palestrante5 = JSON.parse('{{ palestrante5|safe }}');
 var pontuacao5 = JSON.parse('{{ pontuacao5|safe }}');
 var palestrante6 = JSON.parse('{{ palestrante6|safe }}');
 var pontuacao6 = JSON.parse('{{ pontuacao6|safe }}');
-var lista = [palestrante1, palestrante2, palestrante3, palestrante4, palestrante5, palestrante6];
-var lista2 = ["palestrante1", "palestrante2", "palestrante3", "palestrante4", "palestrante5", "palestrante6"];
-var pontuacao = [pontuacao1, pontuacao2, pontuacao3, pontuacao4, pontuacao5, pontuacao6];
+
+var palestrante7 = JSON.parse('{{ palestrante7|safe }}');
+var pontuacao7 = JSON.parse('{{ pontuacao7|safe }}');
+var palestrante8 = JSON.parse('{{ palestrante8|safe }}');
+var pontuacao8 = JSON.parse('{{ pontuacao8|safe }}');
+var palestrante9 = JSON.parse('{{ palestrante9|safe }}');
+var pontuacao9 = JSON.parse('{{ pontuacao9|safe }}');
+var palestrante10 = JSON.parse('{{ palestrante10|safe }}');
+var pontuacao10 = JSON.parse('{{ pontuacao10|safe }}');
+var lista = [palestrante1, palestrante2, palestrante3, palestrante4, palestrante5, palestrante6, palestrante7, palestrante8, palestrante9, palestrante10];
+var lista2 = ["Area1", "Area2", "Area3", "Area4", "Area5", "Area6", "Area7", "Area8", "Area9", "Area10"];
+var pontuacao = [pontuacao1, pontuacao2, pontuacao3, pontuacao4, pontuacao5, pontuacao6, pontuacao7, pontuacao8, pontuacao9, pontuacao10];
 Chart.defaults.global.defaultFontStyle = 'Bold';
 Chart.defaults.global.defaultFontSize = 16;
 var personChart = new Chart(ctx, {
@@ -41,7 +54,11 @@ var personChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)'
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
@@ -49,7 +66,11 @@ var personChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 159, 64, 1)',
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
             ],
             borderWidth: 1
         }]

@@ -50,7 +50,31 @@ def grafico_palestrantes(request):
 		palestrante6 = Palestrante.objects.filter(id=6)
 		palestrante6 = [obj.nome for obj in palestrante6]
 	except:
-		palestrante6 = 'Palestrante'	
+		palestrante6 = 'Palestrante'
+
+	try:
+		palestrante7 = Palestrante.objects.filter(id=7)
+		palestrante7 = [obj.nome for obj in palestrante7]
+	except:
+		palestrante7 = 'Palestrante'
+
+	try:
+		palestrante8 = Palestrante.objects.filter(id=8)
+		palestrante8 = [obj.nome for obj in palestrante8]
+	except:
+		palestrante8 = 'Palestrante'
+
+	try:
+		palestrante9 = Palestrante.objects.filter(id=9)
+		palestrante9 = [obj.nome for obj in palestrante9]
+	except:
+		palestrante9 = 'Palestrante'
+
+	try:
+		palestrante10 = Palestrante.objects.filter(id=10)
+		palestrante10 = [obj.nome for obj in palestrante10]
+	except:
+		palestrante10 = 'Palestrante'
 
 
 	try:
@@ -81,7 +105,27 @@ def grafico_palestrantes(request):
 	try:
 		pontuacao6 = float(Pontuacao.objects.filter(palestrante=6, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
 	except:
-		pontuacao6 = 0		
+		pontuacao6 = 0
+
+	try:
+		pontuacao7 = float(Pontuacao.objects.filter(palestrante=7, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao7 = 0
+
+	try:
+		pontuacao8 = float(Pontuacao.objects.filter(palestrante=8, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao8 = 0
+
+	try:
+		pontuacao9 = float(Pontuacao.objects.filter(palestrante=9, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao9 = 0
+
+	try:
+		pontuacao10 = float(Pontuacao.objects.filter(palestrante=10, data__year=x).aggregate(Avg('pontuacao')).get('pontuacao__avg'))
+	except:
+		pontuacao10 = 0
 	
 	context = {
 		'palestrante1' : json.dumps(palestrante1),
@@ -95,7 +139,15 @@ def grafico_palestrantes(request):
 		'palestrante5' : json.dumps(palestrante5),
 		'pontuacao5': json.dumps(pontuacao5),
 		'palestrante6' : json.dumps(palestrante6),
-		'pontuacao6': json.dumps(pontuacao6),		
+		'pontuacao6': json.dumps(pontuacao6),
+		'palestrante7' : json.dumps(palestrante7),
+		'pontuacao7': json.dumps(pontuacao7),
+		'palestrante8' : json.dumps(palestrante8),
+		'pontuacao8': json.dumps(pontuacao8),
+		'palestrante9' : json.dumps(palestrante9),
+		'pontuacao9': json.dumps(pontuacao9),
+		'palestrante10' : json.dumps(palestrante10),
+		'pontuacao10': json.dumps(pontuacao10),		
 	}
 	return render(request, 'grafico_palestrantes.html', context)
 
