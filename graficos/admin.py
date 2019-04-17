@@ -16,7 +16,7 @@ class PontuacaoAdmin(ImportExportModelAdmin):
 	date_hierarchy = 'data'
 	list_display = ['data', 'palestrante', 'pontuacao', 'email', 'sugestao']
 	search_fields = ['palestrante', 'email', 'data']
-	list_filter = ['pontuacao', 'data']
+	list_filter = ['pontuacao', 'data', 'palestrante']
 
 class PalestranteAdmin(admin.ModelAdmin):
 	date_hierarchy = 'data'
